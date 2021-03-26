@@ -6,4 +6,7 @@ public class FunctionsAsData {
         DataLoader dataLoader = new DataLoader(IS_DEVELOPMENT);
         System.out.println(dataLoader.loadPerson.apply());
     }
+
 }
+
+
