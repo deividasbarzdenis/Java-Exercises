@@ -67,11 +67,26 @@ public class Employee implements Comparable<Employee> {
      * value is returned as per the contract of the Comparable interface.
      * */
     @Override
-    public int compareTo(Employee o) {
-        int compareValue = this.firstName.compareTo(o.firstName);
+    public int compareTo(Employee another) {
+        int compareValue = this.joinDate.compareTo(another.joinDate);
         if (compareValue == 0) {
-            return this.lastName.compareTo(o.lastName);
+            compareValue = this.firstName.compareTo(another.firstName);
+            if (compareValue == 0) {
+                return this.lastName.compareTo(another.lastName);
+            }
+            return compareValue;
         }
         return compareValue;
+    }
+
+    public boolean equals(Object obj) {
+        if (obj instanceof Employee) {
+            Employee another = (Employee) obj;
+            if (this.firstName.equals(another.firstName)
+                    && this.lastName.equals(another.lastName)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
